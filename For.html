@@ -4,42 +4,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projeto For</title>
+    <title>Projeto While</title>
 </head>
 
 <body>
-    <input placeholder="digite o nome do contato">
+    <input placeholder="Digite o nome do contato">
     <p></p>
-    <button onclick="search() ">Procurar Contato</button>
+    <button onclick="search()">Procurar Contato</button>
 
-</body>
-<script>
+    <script>
+        let p = document.querySelector("p");
+        let input = document.querySelector("input");
 
-    let p = document.querySelector("p")
-    let input = document.querySelector("input")
+        const contatos = [
+            { name: "Jhonatan", number: "(47) 997627777" },
+            { name: "Samara", number: "(47) 997627776" },
+            { name: "Juju", number: "(47) 997627775" },
+            { name: "Barbara", number: "(47) 997627774" },
+        ];
 
-    const contatos = [
-        { name: "Jhonatan", number: "(47) 997627777" },
-        { name: "Samara", number: "(47) 997627776" },
-        { name: "Juju", number: "(47) 997627775" },
-        { name: "Barbara", number: "(47) 997627774" },
-    ]
+        function search() {
+            let i = 0; 
+            let encontrado = false; 
 
-    function search() {
-        for (let i = 0; i < contatos.length; i++) {
-            if (input.value.toLowerCase() === contatos[i].name.toLowerCase()) {
-                p.innerHTML = `Contato Encontrado Nome: ${contatos[i].name} tel: ${contatos[i].number}`
-
-                break
-            } 
-                else {
-                    p.innerHTML = "Contato não encontrado,Tente novamente"
+            while (i < contatos.length) {
+                if (input.value.toLowerCase() === contatos[i].name.toLowerCase()) {
+                    p.innerHTML = `Contato Encontrado: Nome: ${contatos[i].name} - Tel: ${contatos[i].number}`;
+                    encontrado = true;
+                    break; 
                 }
+                i++; 
+            }
 
-
-           
+            if (!encontrado) {
+                p.innerHTML = "Contato não encontrado. Tente novamente!";
+            }
         }
-    }
-</script>
+    </script>
+</body>
 
 </html>
